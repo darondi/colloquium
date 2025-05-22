@@ -1,0 +1,50 @@
+{
+  "edgeCount": 0,
+  "edgeList": [],
+  "id": "49219da0-1d2f-4941-ac81-a994b21d8ec4",
+  "isDirect": false,
+  "isNamed": false,
+  "vertexCount": 5,
+  "vertexList": [
+    {
+      "color": "GRAY",
+      "id": 1,
+      "label": "1",
+      "weight": 0,
+      "xCoordinate": 379,
+      "yCoordinate": 319
+    },
+    {
+      "color": "GRAY",
+      "id": 2,
+      "label": "2",
+      "weight": 0,
+      "xCoordinate": 490,
+      "yCoordinate": 52
+    },
+    {
+      "color": "GRAY",
+      "id": 3,
+      "label": "3",
+      "weight": 0,
+      "xCoordinate": 272,
+      "yCoordinate": 87
+    },
+    {
+      "color": "GRAY",
+      "id": 4,
+      "label": "4",
+      "weight": 0,
+      "xCoordinate": 584,
+      "yCoordinate": 234
+    },
+    {
+      "color": "GRAY",
+      "id": 5,
+      "label": "5",
+      "weight": 0,
+      "xCoordinate": 163,
+      "yCoordinate": 243
+    }
+  ]
+}

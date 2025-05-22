@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.leti.NumberOfDifferentSpanningTreesTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-05-22T10:48:59.617Z" hostname="DESKTOP-T899HE0" time="0.349">
+  <properties/>
+  <testcase name="testSimpleGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.289"/>
+  <testcase name="testEmptyGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.004"/>
+  <testcase name="testStarGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.012"/>
+  <testcase name="testFullGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.008"/>
+  <testcase name="testEmptyEdgesGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.005"/>
+  <testcase name="testBipartiteGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.004"/>
+  <testcase name="testOrientedGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.004"/>
+  <testcase name="testTriangleGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.001"/>
+  <testcase name="testDifficultGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.001"/>
+  <testcase name="testFlowerGraph()" classname="ru.leti.NumberOfDifferentSpanningTreesTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,286 @@
+{
+  "edgeCount": 21,
+  "edgeList": [
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 4,
+      "target": 3,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 3,
+      "target": 1,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 4,
+      "target": 2,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 2,
+      "target": 1,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 6,
+      "target": 4,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 5,
+      "target": 6,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 5,
+      "target": 7,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 7,
+      "target": 2,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 10,
+      "target": 9,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 9,
+      "target": 8,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 10,
+      "target": 4,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 8,
+      "target": 3,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 1,
+      "target": 12,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 3,
+      "target": 11,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 11,
+      "target": 13,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 13,
+      "target": 12,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 14,
+      "target": 15,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 15,
+      "target": 16,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 16,
+      "target": 1,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 14,
+      "target": 2,
+      "weight": 0
+    },
+    {
+      "color": "GRAY",
+      "label": "",
+      "source": 11,
+      "target": 11,
+      "weight": 0
+    }
+  ],
+  "id": "fe1ccd8b-05ae-40ff-a91c-c445b8138854",
+  "isDirect": false,
+  "isNamed": false,
+  "vertexCount": 16,
+  "vertexList": [
+    {
+      "color": "GRAY",
+      "id": 1,
+      "label": "1",
+      "weight": 0,
+      "xCoordinate": 552,
+      "yCoordinate": 364
+    },
+    {
+      "color": "GRAY",
+      "id": 2,
+      "label": "2",
+      "weight": 0,
+      "xCoordinate": 380,
+      "yCoordinate": 364
+    },
+    {
+      "color": "GRAY",
+      "id": 3,
+      "label": "3",
+      "weight": 0,
+      "xCoordinate": 552,
+      "yCoordinate": 198
+    },
+    {
+      "color": "GRAY",
+      "id": 4,
+      "label": "4",
+      "weight": 0,
+      "xCoordinate": 381,
+      "yCoordinate": 199
+    },
+    {
+      "color": "GRAY",
+      "id": 5,
+      "label": "5",
+      "weight": 0,
+      "xCoordinate": 24,
+      "yCoordinate": 257
+    },
+    {
+      "color": "GRAY",
+      "id": 6,
+      "label": "6",
+      "weight": 0,
+      "xCoordinate": 155,
+      "yCoordinate": 122
+    },
+    {
+      "color": "GRAY",
+      "id": 7,
+      "label": "7",
+      "weight": 0,
+      "xCoordinate": 145,
+      "yCoordinate": 405
+    },
+    {
+      "color": "GRAY",
+      "id": 8,
+      "label": "8",
+      "weight": 0,
+      "xCoordinate": 641,
+      "yCoordinate": -30
+    },
+    {
+      "color": "GRAY",
+      "id": 9,
+      "label": "9",
+      "weight": 0,
+      "xCoordinate": 467,
+      "yCoordinate": -165
+    },
+    {
+      "color": "GRAY",
+      "id": 10,
+      "label": "10",
+      "weight": 0,
+      "xCoordinate": 298,
+      "yCoordinate": -36
+    },
+    {
+      "color": "GRAY",
+      "id": 11,
+      "label": "11",
+      "weight": 0,
+      "xCoordinate": 794,
+      "yCoordinate": 126
+    },
+    {
+      "color": "GRAY",
+      "id": 12,
+      "label": "12",
+      "weight": 0,
+      "xCoordinate": 789,
+      "yCoordinate": 442
+    },
+    {
+      "color": "GRAY",
+      "id": 13,
+      "label": "13",
+      "weight": 0,
+      "xCoordinate": 955,
+      "yCoordinate": 280
+    },
+    {
+      "color": "GRAY",
+      "id": 14,
+      "label": "14",
+      "weight": 0,
+      "xCoordinate": 313,
+      "yCoordinate": 576
+    },
+    {
+      "color": "GRAY",
+      "id": 15,
+      "label": "15",
+      "weight": 0,
+      "xCoordinate": 469,
+      "yCoordinate": 705
+    },
+    {
+      "color": "GRAY",
+      "id": 16,
+      "label": "16",
+      "weight": 0,
+      "xCoordinate": 607,
+      "yCoordinate": 575
+    }
+  ]
+}
