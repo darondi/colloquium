@@ -8,128 +8,60 @@ import ru.leti.wise.task.plugin.graph.GraphCharacteristic;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.ArrayList;
-import java.util.*;
 
+// Матричная теорема о деревьях или теорема Кирхгофа - даёт выражение на число остовных деревьев графа через определитель определённой матрицы.
+// Пусть G — связный помеченный граф с матрицей Кирхгофа M.
+// Все алгебраические дополнения матрицы Кирхгофа M равны между собой и их общее значение равно количеству остовных деревьев графа G.
+// Число остовов в связном неодноэлементном обыкновенном графе G
+// равно алгебраическому дополнению любого элемента матрицы Кирхгофа B(G).
+// Количество остовных деревьев в графе с одной вершиной равно 1.
+// Матрица Кирхгофа (Лапласиан) строится по правилам:
+// Диагональные элементы matrix[i][i] = степень вершины i.
+// Недиагональные элементы matrix[i][j] = −1, если есть ребро между i и j, иначе 0.
+
+/**
+ * Реализация подсчёта количества различных остовных деревьев в графе с использованием матричной теоремы Кирхгофа.
+ * Теорема утверждает, что для связного помеченного графа G с матрицей Кирхгофа M:
+ * - Все алгебраические дополнения M равны между собой
+ * - Их значение равно количеству остовных деревьев графа G
+ * Для графа с n вершинами:
+ * - Матрица Кирхгофа: L = D - A (D - матрица степеней, A - матрица смежности)
+ * - Диагональные элементы: L[i][i] = степень вершины i
+ * - Недиагональные: L[i][j] = -1 если есть ребро (i,j), иначе 0
+ */
 public class NumberOfDifferentSpanningTrees implements GraphCharacteristic {
-
+    /**
+     * Основной метод вычисления количества остовных деревьев
+     * Возвращает:
+     * - 0 для пустого или несвязного графа
+     * - 1 для графа с одной вершиной
+     * - Для связных графов: определитель минора матрицы Кирхгофа
+     */
     @Override
-//    public int run(Graph graph) {
-//        // пустой граф
-//        if (graph.getVertexList().isEmpty()) {
-//            return 0;
-//        }
-//        // связность графа
-//        if (!isGraphConnected(graph)) {
-//            return 0;
-//        }
-//
-//        // Если граф ориентированный → преобразуем в неориентированный
-//        if (graph.isDirect()) {
-//            graph = makeUndirected(graph);
-//        }
-//
-//        int n = graph.getVertexList().size();
-//        if (n <= 1) return 1; // граф с одной вершиной это одно дерево
-//        // карта для поиска индексов вершин
-//        Map<Integer, Integer> vertexIndexMap = createVertexIndexMap(graph);
-//        // матрица Кирхгофа
-//        double[][] kirchhoffMatrix = buildKirchhoffMatrix(graph, n, vertexIndexMap);
-//        // минор матрицы Кирхгофа (удаление последней строки и столбца - не принципиально)
-//        double[][] minor = new double[n - 1][n - 1];
-//        for (int i = 0; i < n - 1; i++) {
-//            System.arraycopy(kirchhoffMatrix[i], 0, minor[i], 0, n - 1);
-//        }
-//        return (int) Math.round(determinant(minor));
-//    }
     public int run(Graph graph) {
-        // Проверка на пустой граф
+        // Если граф не содержит вершин, то количество остовных деревьев равно 0
         if (graph.getVertexList().isEmpty()) {
             return 0;
         }
-
-        // Нормализация графа (удаление кратных ребер и приведение к неориентированному виду)
-        Graph normalizedGraph = normalizeGraph(graph);
-
-        // Проверка связности
-        if (!isGraphConnected(normalizedGraph)) {
+        // У несвязных графов также количество остовных деревьев равно 0
+        if (!isGraphConnected(graph)) {
             return 0;
         }
+        int n = graph.getVertexList().size();
+        if (n <= 1) return 1; // граф с одной вершиной имеет одно остовное дерево
 
-        int n = normalizedGraph.getVertexList().size();
-        if (n <= 1) return 1;
-
-        // Построение матрицы Кирхгофа
-        Map<Integer, Integer> vertexIndexMap = createVertexIndexMap(normalizedGraph);
-        double[][] kirchhoffMatrix = buildKirchhoffMatrix(normalizedGraph, n, vertexIndexMap);
-
-        // Вычисление минора
+        Map<Integer, Integer> vertexIndexMap = createVertexIndexMap(graph);
+        // матрица Кирхгофа
+        double[][] kirchhoffMatrix = buildKirchhoffMatrix(graph, n, vertexIndexMap);
+        // Чтобы найти количество остовных деревьев, нужно взять алгебраическое дополнение любого элемента матрицы Кирхгофа
         double[][] minor = new double[n - 1][n - 1];
         for (int i = 0; i < n - 1; i++) {
             System.arraycopy(kirchhoffMatrix[i], 0, minor[i], 0, n - 1);
         }
-
         return (int) Math.round(determinant(minor));
     }
 
-//    // Преобразование ориентированного графа в неориентированный
-//    private Graph makeUndirected(Graph graph) {
-//        List<Edge> undirectedEdges = new ArrayList<>();
-//        for (Edge edge : graph.getEdgeList()) {
-//            // Добавляем ребро в исходном направлении
-//            undirectedEdges.add(edge);
-//            // Если граф ориентированный, добавляем обратное ребро (если его ещё нет)
-//            Edge reverseEdge = Edge.builder()
-//                    .source(edge.getTarget())
-//                    .target(edge.getSource())
-//                    .color(edge.getColor())
-//                    .weight(edge.getWeight())
-//                    .label(edge.getLabel())
-//                    .build();
-//            // Проверяем, есть ли уже такое ребро (сравниваем по source и target)
-//            boolean exists = undirectedEdges.stream()
-//                    .anyMatch(e ->
-//                            (e.getSource() == reverseEdge.getSource() &&
-//                                    e.getTarget() == reverseEdge.getTarget()) ||
-//                                    (e.getSource() == reverseEdge.getTarget() &&
-//                                            e.getTarget() == reverseEdge.getSource()));
-//            if (!exists) {
-//                undirectedEdges.add(reverseEdge);
-//            }
-//        }
-//        // Создаём новый неориентированный граф
-//        return Graph.builder()
-//                .vertexList(graph.getVertexList())
-//                .edgeList(undirectedEdges)
-//                .isDirect(false) // Теперь граф неориентированный
-//                .vertexCount(graph.getVertexCount())
-//                .edgeCount(undirectedEdges.size())
-//                .build();
-//    }
-    private Graph normalizeGraph(Graph graph) {
-        // Удаляем кратные ребра и нормализуем направление
-        Set<Edge> uniqueEdges = new HashSet<>();
-        for (Edge edge : graph.getEdgeList()) {
-            // Нормализуем направление ребра
-            int source = Math.min(edge.getSource(), edge.getTarget());
-            int target = Math.max(edge.getSource(), edge.getTarget());
-
-            Edge normalizedEdge = new Edge(source, target, edge.getColor(),
-                    edge.getWeight(), edge.getLabel());
-            uniqueEdges.add(normalizedEdge);
-        }
-
-        return new Graph(
-                graph.getVertexCount(),
-                uniqueEdges.size(),
-                false, // всегда неориентированный после нормализации
-                new ArrayList<>(uniqueEdges),
-                new ArrayList<>(graph.getVertexList())
-        );
-    }
-
-    // айдишка + индекс
+    // ID вершины - индекс
     private Map<Integer, Integer> createVertexIndexMap(Graph graph) {
         Map<Integer, Integer> vertexIndexMap = new HashMap<>();
         List<Vertex> vertices = graph.getVertexList();
@@ -138,7 +70,8 @@ public class NumberOfDifferentSpanningTrees implements GraphCharacteristic {
         }
         return vertexIndexMap;
     }
-    // проверка связности
+    // Проверка связности графа через обход в глубину
+    // Возвращает true если все вершины достижимы из стартовой
     private boolean isGraphConnected(Graph graph) {
         List<Vertex> vertices = graph.getVertexList();
         if (vertices.isEmpty()) return true;
@@ -150,6 +83,7 @@ public class NumberOfDifferentSpanningTrees implements GraphCharacteristic {
         }
         return true;
     }
+
     // обход в глубину
     private void dfs(int v, boolean[] visited, Graph graph, Map<Integer, Integer> vertexIndexMap) {
         visited[v] = true;
@@ -171,6 +105,15 @@ public class NumberOfDifferentSpanningTrees implements GraphCharacteristic {
             }
         }
     }
+    /**
+     * Строит матрицу Кирхгофа для графа
+     * Алгоритм:
+     * 1. Инициализирует нулевую матрицу n×n
+     * 2. Для каждого ребра (u,v):
+     *    - Увеличивает degree[u][u] и degree[v][v] на 1
+     *    - Уменьшает degree[u][v] и degree[v][u] на 1 для неориентированного графа
+     * Возвращает построенную матрицу Кирхгофа
+     */
     // построение матрицы
     private double[][] buildKirchhoffMatrix(Graph graph, int n, Map<Integer, Integer> vertexIndexMap) {
         double[][] matrix = new double[n][n];
@@ -189,7 +132,17 @@ public class NumberOfDifferentSpanningTrees implements GraphCharacteristic {
         }
         return matrix;
     }
+
     // для поиска определителя матрицы
+    /**
+     * Вычисляет определитель матрицы методом Гаусса с выбором главного элемента
+     * Алгоритм:
+     * 1. Приведение матрицы к верхнетреугольному виду
+     * 2. Выбор максимального элемента в столбце для устойчивости
+     * 3. Перестановка строк при необходимости
+     * 4. Нулевой определитель возвращается при обнаружении вырожденности
+     * Возвращает значение определителя с точностью до epsilon
+     */
     private double determinant(double[][] matrix) {
         int n = matrix.length;
         double det = 1;
