@@ -1,6 +1,8 @@
 # colloquium
 a program that determines the number of different spanning trees
 
+![image](https://github.com/user-attachments/assets/405b95de-447a-4b0e-b477-e0d545b087fb)
+
 
 Литературные источники:
 · https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D0%BE%D0%B2%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE
