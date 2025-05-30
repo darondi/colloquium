@@ -1,3 +1,5 @@
+package ru.leti;
+
 import ru.leti.wise.task.graph.model.Graph;
 import ru.leti.wise.task.graph.model.Vertex;
 import ru.leti.wise.task.graph.model.Edge;
@@ -50,6 +52,11 @@ public class NumberOfDifferentSpanningTrees implements GraphCharacteristic {
         }
         int vertexCount = graph.getVertexList().size();
         if (vertexCount <= 1) return 1; // Граф с одной вершиной имеет одно остовное дерево
+        // Использование теоремы Кэли для полного графа
+        if (isCompleteGraph(graph)) {
+            int n = graph.getVertexList().size();
+            return (int) Math.pow(n, n - 2);
+        }
 
         Map<Integer, Integer> vertexIndexMap = createVertexIndexMap(graph);
         // Матрица Кирхгофа
@@ -71,6 +78,42 @@ public class NumberOfDifferentSpanningTrees implements GraphCharacteristic {
             vertexIndexMap.put(vertices.get(i).getId(), i);
         }
         return vertexIndexMap;
+    }
+
+    /**
+     * Проверяет, является ли граф полным
+     * Граф считается полным, если между каждой парой различных вершин есть ребро
+     * В полном графе всегда должно быть n*(n-1)/2 ребер
+     * В матрице смежности все недиагональные элементы должны быть равны 1, а диагональные - 0 (петель нет)
+     */
+    private boolean isCompleteGraph(Graph graph) {
+        List<Vertex> vertices = graph.getVertexList();
+        int n = vertices.size();
+        int expectedEdgeCount = n * (n - 1) / 2;
+        if (graph.getEdgeList().size() != expectedEdgeCount) {
+            return false;
+        }
+
+        Map<Integer, Integer> vertexIndexMap = createVertexIndexMap(graph);
+        int[][] adjacencyMatrix = new int[n][n];
+
+        for (Edge edge : graph.getEdgeList()) {
+            Integer u = vertexIndexMap.get(edge.getSource());
+            Integer v = vertexIndexMap.get(edge.getTarget());
+            if (u != null && v != null && !u.equals(v)) {
+                adjacencyMatrix[u][v] = 1;
+                adjacencyMatrix[v][u] = 1;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i != j && adjacencyMatrix[i][j] != 1) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     // Проверка связности графа через обход в глубину, возвращает true если все вершины достижимы из стартовой
