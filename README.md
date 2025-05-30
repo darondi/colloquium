@@ -6,6 +6,8 @@
 ### Тестовые графы: 
 - [Графы, использованные при тестировании](https://drive.google.com/drive/folders/189ldpSEKwrAR7yNAe_MhUy4Ug_spB08c?usp=drive_link)
 
+### Презентация:
+- [Число различных остовных деревьев](https://docs.google.com/presentation/d/1WUAdKL1alvU32op47EC6U6aM0LbAvGKROz6zkGXbgrk/edit?usp=sharing)
 
 ### Использованные источники:
 
