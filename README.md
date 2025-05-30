@@ -1,5 +1,5 @@
-# colloquium
-a program that determines the number of different spanning trees
+# Коллоквиум
+Программа вычисляет количество различных остовных деревьев в графе
 
 ![image](https://github.com/user-attachments/assets/405b95de-447a-4b0e-b477-e0d545b087fb)
 
